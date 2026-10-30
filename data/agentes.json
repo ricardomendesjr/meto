@@ -1,25 +1,4 @@
 {
-  "lastNumber": 2,
-  "agents": [
-    {
-      "number": 2,
-      "formattedNumber": "0002",
-      "id": "METO-0002/PR",
-      "codinome": "SILMARA",
-      "cidade": "CURITIBA",
-      "uf": "PR",
-      "date": "29/10/2026",
-      "createdAt": "2026-10-30T02:19:27.645Z"
-    },
-    {
-      "number": 1,
-      "formattedNumber": "0001",
-      "id": "METO-0001/PI",
-      "codinome": "RICARDINHO",
-      "cidade": "CURITIBA",
-      "uf": "PI",
-      "date": "29/10/2026",
-      "createdAt": "2026-10-30T01:33:09.941Z"
-    }
-  ]
+  "lastNumber": 0,
+  "agents": []
 }

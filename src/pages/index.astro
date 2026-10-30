@@ -268,18 +268,9 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
           <div class="recent-agents">
             <p class="recent-title">REGISTRO SEQUENCIAL DE CARTEIRINHAS EMITIDAS</p>
             <ul id="recent-list" class="recent-list">
-              {recentAgents.length === 0 ? (
-                <li class="empty-item" id="empty-agents-msg">
-                  Nenhuma carteirinha emitida ainda. Seja o Nº 0001!
-                </li>
-              ) : (
-                recentAgents.map((agent) => (
-                  <li>
-                    <span><strong>Nº {agent.formattedNumber}</strong> — {agent.codinome}</span>
-                    <span>{agent.cidade}/{agent.uf}</span>
-                  </li>
-                ))
-              )}
+              <li class="empty-item" id="empty-agents-msg">
+                Carregando registro de agentes...
+              </li>
             </ul>
           </div>
         </div>
