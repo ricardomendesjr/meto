@@ -338,6 +338,26 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         return String(num).padStart(4, "0");
       }
 
+      const LOWERCASE_WORDS = new Set([
+        "da", "de", "do", "das", "dos", "e", "em", "na", "no", "nas", "nos"
+      ]);
+
+      function formatProperName(value: string): string {
+        return String(value || "")
+          .trim()
+          .replace(/\s+/g, " ")
+          .toLowerCase()
+          .split(" ")
+          .filter(Boolean)
+          .map((word, index) => {
+            if (index > 0 && LOWERCASE_WORDS.has(word)) {
+              return word;
+            }
+            return word.charAt(0).toUpperCase() + word.slice(1);
+          })
+          .join(" ");
+      }
+
       function downloadCredentialAsPng(data: AgentCredential) {
         const canvas = document.createElement("canvas");
         canvas.width = 1000;
@@ -499,20 +519,24 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         }
 
         for (const agent of agents) {
+          const cleanCodinome = formatProperName(agent.codinome);
+          const cleanCidade = formatProperName(agent.cidade);
+          const normalizedAgent = { ...agent, codinome: cleanCodinome, cidade: cleanCidade };
+
           const li = document.createElement("li");
           const left = document.createElement("span");
           const strong = document.createElement("strong");
           strong.textContent = `Nº ${agent.formattedNumber}`;
           left.appendChild(strong);
-          left.appendChild(document.createTextNode(` — ${agent.codinome} (${agent.cidade}/${agent.uf})`));
+          left.appendChild(document.createTextNode(` — ${cleanCodinome} (${cleanCidade}/${agent.uf})`));
 
           const btn = document.createElement("button");
           btn.type = "button";
           btn.className = "btn-inline-download";
           btn.textContent = "[Baixar Carteirinha]";
           btn.addEventListener("click", () => {
-            renderCredential(agent);
-            downloadCredentialAsPng(agent);
+            renderCredential(normalizedAgent);
+            downloadCredentialAsPng(normalizedAgent);
           });
 
           li.appendChild(left);
@@ -524,12 +548,18 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
       function renderCredential(data: AgentCredential) {
         if (!form || !credBox || !credSeqNumberEl || !credIdEl || !credNameEl || !credLocEl || !credDateEl) return;
 
-        currentCredential = data;
-        credSeqNumberEl.textContent = `Nº ${data.formattedNumber}`;
-        credIdEl.textContent = data.id;
-        credNameEl.textContent = data.codinome;
-        credLocEl.textContent = `${data.cidade}/${data.uf}`;
-        credDateEl.textContent = data.date;
+        const normalized: AgentCredential = {
+          ...data,
+          codinome: formatProperName(data.codinome),
+          cidade: formatProperName(data.cidade),
+        };
+
+        currentCredential = normalized;
+        credSeqNumberEl.textContent = `Nº ${normalized.formattedNumber}`;
+        credIdEl.textContent = normalized.id;
+        credNameEl.textContent = normalized.codinome;
+        credLocEl.textContent = `${normalized.cidade}/${normalized.uf}`;
+        credDateEl.textContent = normalized.date;
 
         form.hidden = true;
         credBox.hidden = false;
@@ -581,15 +611,33 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
 
       syncSequentialState();
 
+      const codinomeField = document.getElementById("codinome") as HTMLInputElement | null;
+      const cidadeField = document.getElementById("cidade") as HTMLInputElement | null;
+
+      codinomeField?.addEventListener("blur", () => {
+        if (codinomeField.value.trim()) {
+          codinomeField.value = formatProperName(codinomeField.value);
+        }
+      });
+
+      cidadeField?.addEventListener("blur", () => {
+        if (cidadeField.value.trim()) {
+          cidadeField.value = formatProperName(cidadeField.value);
+        }
+      });
+
       form?.addEventListener("submit", async (e) => {
         e.preventDefault();
         const codinomeInput = document.getElementById("codinome") as HTMLInputElement;
         const cidadeInput = document.getElementById("cidade") as HTMLInputElement;
         const ufSelect = document.getElementById("uf") as HTMLSelectElement;
 
-        const codinome = codinomeInput.value.trim();
-        const cidade = cidadeInput.value.trim();
+        const codinome = formatProperName(codinomeInput.value);
+        const cidade = formatProperName(cidadeInput.value);
         const uf = ufSelect.value.trim();
+
+        codinomeInput.value = codinome;
+        cidadeInput.value = cidade;
 
         if (!codinome || !cidade || !uf) return;
 

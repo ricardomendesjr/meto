@@ -1,5 +1,25 @@
 import { getStore } from "@netlify/blobs";
 
+const LOWERCASE_WORDS = new Set([
+  "da", "de", "do", "das", "dos", "e", "em", "na", "no", "nas", "nos"
+]);
+
+function formatProperName(value) {
+  return String(value || "")
+    .trim()
+    .replace(/\s+/g, " ")
+    .toLowerCase()
+    .split(" ")
+    .filter(Boolean)
+    .map((word, index) => {
+      if (index > 0 && LOWERCASE_WORDS.has(word)) {
+        return word;
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
+}
+
 function padSequential(num) {
   return String(num).padStart(4, "0");
 }
@@ -39,8 +59,8 @@ export default async (req) => {
 
     if (req.method === "POST") {
       const body = await req.json();
-      const codinome = String(body.codinome || "").trim().slice(0, 36);
-      const cidade = String(body.cidade || "").trim().slice(0, 40);
+      const codinome = formatProperName(body.codinome).slice(0, 36);
+      const cidade = formatProperName(body.cidade).slice(0, 40);
       const uf = String(body.uf || "").trim().toUpperCase().slice(0, 2);
 
       if (!codinome || !cidade || !uf) {
