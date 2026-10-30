@@ -275,15 +275,8 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
               ) : (
                 recentAgents.map((agent) => (
                   <li>
-                    <span><strong>Nº {agent.formattedNumber}</strong> — {agent.codinome} ({agent.cidade}/{agent.uf})</span>
-                    <button
-                      type="button"
-                      class="btn-inline-download"
-                      data-agent={JSON.stringify(agent)}
-                      title={`Baixar Carteirinha Nº ${agent.formattedNumber}`}
-                    >
-                      [Baixar Carteirinha]
-                    </button>
+                    <span><strong>Nº {agent.formattedNumber}</strong> — {agent.codinome}</span>
+                    <span>{agent.cidade}/{agent.uf}</span>
                   </li>
                 ))
               )}
@@ -517,26 +510,19 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         for (const agent of agents) {
           const cleanCodinome = formatProperName(agent.codinome);
           const cleanCidade = formatProperName(agent.cidade);
-          const normalizedAgent = { ...agent, codinome: cleanCodinome, cidade: cleanCidade };
 
           const li = document.createElement("li");
           const left = document.createElement("span");
           const strong = document.createElement("strong");
           strong.textContent = `Nº ${agent.formattedNumber}`;
           left.appendChild(strong);
-          left.appendChild(document.createTextNode(` — ${cleanCodinome} (${cleanCidade}/${agent.uf})`));
+          left.appendChild(document.createTextNode(` — ${cleanCodinome}`));
 
-          const btn = document.createElement("button");
-          btn.type = "button";
-          btn.className = "btn-inline-download";
-          btn.textContent = "[Baixar Carteirinha]";
-          btn.addEventListener("click", () => {
-            renderCredential(normalizedAgent);
-            downloadCredentialAsPng(normalizedAgent);
-          });
+          const right = document.createElement("span");
+          right.textContent = `${cleanCidade}/${agent.uf}`;
 
           li.appendChild(left);
-          li.appendChild(btn);
+          li.appendChild(right);
           recentListEl.appendChild(li);
         }
       }
