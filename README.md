@@ -90,4 +90,6 @@ O portal foi criado com dois objetivos principais:
 
 ## 📄 Licença
 
+Este projeto e seu material gráfico são disponibilizados sob a licença **[CC0 1.0 Universal (Domínio Público)](./LICENSE)** — totalmente livre para copiar, imprimir, modificar, distribuir e espalhar pelos para-brisas que merecem, sem necessidade de pedir permissão.
+
 Movimento Ética para Todos — **METO**. A ética começa na vaga.
