@@ -1,10 +1,10 @@
 {
   "name": "movimento-meto",
   "type": "module",
-  "version": "1.2.6",
-  "appVersion": "1.2.0.6",
+  "version": "1.2.7",
+  "appVersion": "1.2.0.7",
   "dbVersion": "1.9.0",
-  "lastUpdated": "2026-10-29",
+  "lastUpdated": "2026-10-30",
   "license": "CC0-1.0",
   "scripts": {
     "dev": "astro dev",
