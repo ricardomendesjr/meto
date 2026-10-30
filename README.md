@@ -9,7 +9,7 @@ Site oficial do **Movimento Ética para Todos (METO)** — uma iniciativa direta
 ## 🎯 Objetivo do Projeto
 
 O portal foi criado com dois objetivos principais:
-1. **Disponibilizar o aviso oficial de Estacionamento Irregular** (diagramado em formato **A5 Paisagem** de alto contraste P&B) para download imediato em PDF ou impressão direta pelo navegador.
+1. **Neste primeiro momento disponibilizar o aviso oficial de Estacionamento Irregular** (diagramado em formato **A5 Paisagem** de alto contraste P&B) para download imediato em PDF ou impressão direta pelo navegador.
 2. **Permitir a inscrição rápida e anônima de agentes do movimento**, sem exigir dados pessoais sensíveis (sem CPF, RG ou e-mail) — apenas um **Apelido/Codinome** e **Cidade/UF**, emitindo na hora uma **Carteirinha Oficial numerada sequencialmente** (`Nº 0001`, `Nº 0002`, `Nº 0003`...).
 
 ---
