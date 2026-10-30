@@ -41,10 +41,10 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>METO â€” Movimento Ã‰tica para Todos</title>
+    <title>METO — Movimento Ética para Todos</title>
     <meta
       name="description"
-      content="Movimento Ã‰tica para Todos (METO). InscriÃ§Ã£o rÃ¡pida com carteirinha numerada sequencialmente e download oficial do aviso de estacionamento irregular (A5 Paisagem)."
+      content="Movimento Ética para Todos (METO). Inscrição rápida com carteirinha numerada sequencialmente e download oficial do aviso de estacionamento irregular (A5 Paisagem)."
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
@@ -54,37 +54,37 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
       <header class="topbar no-print">
         <div class="topbar-brand">
           <span class="badge-dot"></span>
-          <strong>METO</strong> â€” Movimento Ã‰tica para Todos
+          <strong>METO</strong> — Movimento Ética para Todos
         </div>
         <div class="topbar-stats">
           <span>Carteirinhas emitidas: <strong id="agent-counter">{lastNumber}</strong></span>
           <span class="topbar-sep">|</span>
-          <span>PrÃ³ximo NÂº: <strong id="topbar-next-num">#{nextFormatted}</strong></span>
+          <span>Próximo Nº: <strong id="topbar-next-num">#{nextFormatted}</strong></span>
         </div>
       </header>
 
       <!-- HERO / REPLICA OF THE A5 NOTICE -->
-      <section class="notice-wrapper" aria-label="PrÃ©via do Aviso Oficial METO">
-        <div class="section-tag no-print">DOCUMENTO OFICIAL â€” FORMATO A5 PAISAGEM</div>
+      <section class="notice-wrapper" aria-label="Prévia do Aviso Oficial METO">
+        <div class="section-tag no-print">DOCUMENTO OFICIAL — FORMATO A5 PAISAGEM</div>
 
         <article class="a5-sheet" id="printable-notice">
-          <p class="a5-header">Movimento Ã‰tica para Todos - METO</p>
+          <p class="a5-header">Movimento Ética para Todos - METO</p>
 
           <div class="a5-body">
             <h1 class="a5-title">ESTACIONAMENTO IRREGULAR</h1>
 
             <p class="a5-text">
-              VocÃª estÃ¡ numa vaga que exige autorizaÃ§Ã£o especial<br />
-              que vocÃª nÃ£o colocou.
+              Você está numa vaga que exige autorização especial<br />
+              que você não colocou.
             </p>
 
             <p class="a5-punchline">
-              Ah! NÃ£o tem? EntÃ£o nÃ£o faÃ§a mais isso,<br />
+              Ah! Não tem? Então não faça mais isso,<br />
               seu filho (ou sua filha) da puta do caralho.
             </p>
           </div>
 
-          <p class="a5-footer">Movimento Ã‰tica para Todos - METO</p>
+          <p class="a5-footer">Movimento Ética para Todos - METO</p>
         </article>
 
         <!-- DIRECT DOWNLOAD & ACTIONS BAR -->
@@ -116,7 +116,7 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         </div>
 
         <p class="specs-note no-print">
-          Arquivo original: <code>{pdfFileName}</code> (422 KB â€¢ Pronto para impressÃ£o em folha A4 ou A5).
+          Arquivo original: <code>{pdfFileName}</code> (422 KB • Pronto para impressão em folha A4 ou A5).
         </p>
       </section>
 
@@ -126,11 +126,11 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         <div class="box" id="inscricao">
           <div class="box-header">
             <span class="step-num">01</span>
-            <h2>INSCRIÃ‡ÃƒO RÃPIDA DE AGENTE</h2>
+            <h2>INSCRIÇÃO RÁPIDA DE AGENTE</h2>
           </div>
 
           <p class="box-desc">
-            Sem CPF, sem RG, sem e-mail e sem frescura. Basta um codinome e sua cidade para emitir sua carteirinha com numeraÃ§Ã£o sequencial.
+            Sem CPF, sem RG, sem e-mail e sem frescura. Basta um codinome e sua cidade para emitir sua carteirinha.
           </p>
 
           <form id="meto-form" class="meto-form" autocomplete="off">
@@ -142,7 +142,7 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
                 name="codinome"
                 required
                 maxlength="36"
-                placeholder="Ex: CidadÃ£o Pistola, Fiscal do Asfalto..."
+                placeholder="Ex: Cidadão Pistola, Fiscal do Asfalto..."
               />
             </div>
 
@@ -155,7 +155,7 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
                   name="cidade"
                   required
                   maxlength="40"
-                  placeholder="Ex: SÃ£o Paulo"
+                  placeholder="Ex: São Paulo"
                 />
               </div>
 
@@ -172,13 +172,13 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
               <label for="compromisso" class="checkbox-label">
                 <input type="checkbox" id="compromisso" required checked />
                 <span>
-                  Comprometo-me a deixar este aviso no para-brisa de quem estaciona onde nÃ£o deve.
+                  Comprometo-me a deixar este aviso no para-brisa de quem estaciona onde não deve.
                 </span>
               </label>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-full" id="btn-submit-form">
-              GERAR CARTEIRINHA SEQUENCIAL
+            <button type="submit" class="btn btn-gray-rounded btn-full" id="btn-submit-form">
+              GERAR CARTEIRINHA
             </button>
           </form>
 
@@ -186,27 +186,27 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
           <div id="credential-result" class="credential-card" hidden>
             <div class="credential-border">
               <div class="credential-top">
-                <span>Movimento Ã‰tica para Todos - METO</span>
+                <span>Movimento Ética para Todos - METO</span>
                 <span class="cred-status">ATIVA</span>
               </div>
 
               <div class="cred-seq-box">
                 <span class="cred-seq-label">CARTEIRINHA OFICIAL</span>
-                <strong class="cred-seq-number" id="cred-seq-number">NÂº 0001</strong>
+                <strong class="cred-seq-number" id="cred-seq-number">Nº 0001</strong>
               </div>
 
               <div class="credential-main">
                 <p class="cred-label">AGENTE CREDENCIADO(A)</p>
-                <h3 class="cred-name" id="cred-name">â€”</h3>
+                <h3 class="cred-name" id="cred-name">—</h3>
                 <p class="cred-meta">
-                  <span>MATRÃCULA: <strong id="cred-id">METO-0001/SP</strong></span>
-                  <span>BASE: <strong id="cred-location">â€”</strong></span>
-                  <span>EMISSÃƒO: <strong id="cred-date">â€”</strong></span>
+                  <span>MATRÍCULA: <strong id="cred-id">METO-0001/SP</strong></span>
+                  <span>BASE: <strong id="cred-location">—</strong></span>
+                  <span>EMISSÃO: <strong id="cred-date">—</strong></span>
                 </p>
               </div>
 
               <p class="credential-quote">
-                â€œAutorizado(a) a educar motoristas folgados com a sutileza que eles merecem.â€
+                “Autorizado(a) a educar motoristas folgados com a sutileza que eles merecem.”
               </p>
             </div>
 
@@ -228,7 +228,7 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
                 BAIXAR AVISO A5 (PDF)
               </a>
               <button type="button" id="btn-new-cred" class="btn btn-outline btn-small">
-                + EMITIR NOVA CARTEIRINHA (PRÃ“XIMO NÂº)
+                + EMITIR NOVA CARTEIRINHA
               </button>
             </div>
           </div>
@@ -238,24 +238,24 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         <div class="box">
           <div class="box-header">
             <span class="step-num">02</span>
-            <h2>PROTOCOLO DE AÃ‡ÃƒO</h2>
+            <h2>PROTOCOLO DE AÇÃO</h2>
           </div>
 
           <ol class="protocol-list">
             <li>
               <strong>Baixe e imprima o PDF</strong>
               <p>
-                O arquivo oficial estÃ¡ diagramado em formato <strong>A5 Paisagem</strong> com borda preta de alto contraste. Imprima algumas cÃ³pias e deixe no porta-luvas.
+                O arquivo oficial está diagramado em formato <strong>A5 Paisagem</strong> com borda preta de alto contraste. Imprima algumas cópias e deixe no porta-luvas.
               </p>
             </li>
             <li>
-              <strong>Identifique a infraÃ§Ã£o</strong>
+              <strong>Identifique a infração</strong>
               <p>
-                Vaga de idoso, vaga PCD ou vaga exclusiva ocupada sem credencial visÃ­vel no painel? O alvo foi localizado.
+                Vaga de idoso, vaga PCD ou vaga exclusiva ocupada sem credencial visível no painel? O alvo foi localizado.
               </p>
             </li>
             <li>
-              <strong>Aplique a notificaÃ§Ã£o educativa</strong>
+              <strong>Aplique a notificação educativa</strong>
               <p>
                 Posicione o aviso sob a palheta do limpador de para-brisa com o texto voltado para fora, garantindo leitura imediata pelo infrator e pelos pedestres.
               </p>
@@ -267,17 +267,17 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
             <ul id="recent-list" class="recent-list">
               {recentAgents.length === 0 ? (
                 <li class="empty-item" id="empty-agents-msg">
-                  Nenhuma carteirinha emitida ainda. Seja o NÂº 0001!
+                  Nenhuma carteirinha emitida ainda. Seja o Nº 0001!
                 </li>
               ) : (
                 recentAgents.map((agent) => (
                   <li>
-                    <span><strong>NÂº {agent.formattedNumber}</strong> â€” {agent.codinome} ({agent.cidade}/{agent.uf})</span>
+                    <span><strong>Nº {agent.formattedNumber}</strong> — {agent.codinome} ({agent.cidade}/{agent.uf})</span>
                     <button
                       type="button"
                       class="btn-inline-download"
                       data-agent={JSON.stringify(agent)}
-                      title={`Baixar Carteirinha NÂº ${agent.formattedNumber}`}
+                      title={`Baixar Carteirinha Nº ${agent.formattedNumber}`}
                     >
                       [Baixar Carteirinha]
                     </button>
@@ -290,8 +290,8 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
       </section>
 
       <footer class="footer no-print">
-        <p><strong>Movimento Ã‰tica para Todos - METO</strong></p>
-        <p>InscriÃ§Ã£o anÃ´nima com numeraÃ§Ã£o sequencial automÃ¡tica. A Ã©tica comeÃ§a na vaga.</p>
+        <p><strong>Movimento Ética para Todos - METO</strong></p>
+        <p>Inscrição anônima com numeração sequencial automática. A ética começa na vaga.</p>
       </footer>
     </main>
 
@@ -310,7 +310,6 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
       const credDateEl = document.getElementById("cred-date");
       const counterEl = document.getElementById("agent-counter");
       const topbarNextNumEl = document.getElementById("topbar-next-num");
-      const formNextSeqEl = document.getElementById("form-next-seq");
       const recentListEl = document.getElementById("recent-list");
       const btnNewCred = document.getElementById("btn-new-cred");
       const btnDownloadCred = document.getElementById("btn-download-cred");
@@ -377,7 +376,7 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         ctx.fillStyle = "#000000";
         ctx.font = "bold 22px Verdana, sans-serif";
         ctx.textAlign = "left";
-        ctx.fillText("Movimento Ã‰tica para Todos - METO", 64, 84);
+        ctx.fillText("Movimento Ética para Todos - METO", 64, 84);
 
         // ATIVA badge
         ctx.fillStyle = "#000000";
@@ -402,10 +401,10 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         ctx.fillStyle = "#ffffff";
         ctx.font = "bold 18px Verdana, sans-serif";
         ctx.textAlign = "center";
-        ctx.fillText("CARTEIRINHA OFICIAL DE FISCALIZAÃ‡ÃƒO Ã‰TICA", canvas.width / 2, 168);
+        ctx.fillText("CARTEIRINHA OFICIAL DE FISCALIZAÇÃO ÉTICA", canvas.width / 2, 168);
 
         ctx.font = "bold 54px Verdana, sans-serif";
-        ctx.fillText(`NÂº ${data.formattedNumber}`, canvas.width / 2, 232);
+        ctx.fillText(`Nº ${data.formattedNumber}`, canvas.width / 2, 232);
 
         // Agent label & name
         ctx.fillStyle = "#000000";
@@ -413,12 +412,12 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         ctx.fillText("AGENTE CREDENCIADO(A)", canvas.width / 2, 305);
 
         ctx.font = "bold 40px Verdana, sans-serif";
-        const displayCodinome = data.codinome.length > 28 ? data.codinome.slice(0, 28) + "â€¦" : data.codinome;
+        const displayCodinome = data.codinome.length > 28 ? data.codinome.slice(0, 28) + "…" : data.codinome;
         ctx.fillText(displayCodinome, canvas.width / 2, 360);
 
         // Metadata line
         ctx.font = "21px Verdana, sans-serif";
-        const metaText = `MATRÃCULA: ${data.id}   â€¢   BASE: ${data.cidade}/${data.uf}   â€¢   EMISSÃƒO: ${data.date}`;
+        const metaText = `MATRÍCULA: ${data.id}   •   BASE: ${data.cidade}/${data.uf}   •   EMISSÃO: ${data.date}`;
         ctx.fillText(metaText, canvas.width / 2, 420);
 
         // Dashed separator
@@ -433,14 +432,14 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         // Quote
         ctx.font = "italic 21px Verdana, sans-serif";
         ctx.fillText(
-          "â€œAutorizado(a) a educar motoristas folgados com a sutileza que eles merecem.â€",
+          "“Autorizado(a) a educar motoristas folgados com a sutileza que eles merecem.”",
           canvas.width / 2,
           515
         );
 
         // Footer
         ctx.font = "bold 17px Verdana, sans-serif";
-        ctx.fillText("Movimento Ã‰tica para Todos - METO", canvas.width / 2, 565);
+        ctx.fillText("Movimento Ética para Todos - METO", canvas.width / 2, 565);
 
         // Trigger download
         const link = document.createElement("a");
@@ -458,7 +457,7 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Carteirinha METO NÂº ${data.formattedNumber}</title>
+  <title>Carteirinha METO Nº ${data.formattedNumber}</title>
   <style>
     @page { size: A6 landscape; margin: 8mm; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -478,17 +477,17 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
 <body>
   <div class="card">
     <div class="top">
-      <span>Movimento Ã‰tica para Todos - METO</span>
+      <span>Movimento Ética para Todos - METO</span>
       <span class="badge">ATIVA</span>
     </div>
     <div class="seq">
-      <small>CARTEIRINHA OFICIAL DE FISCALIZAÃ‡ÃƒO Ã‰TICA</small>
-      <strong>NÂº ${data.formattedNumber}</strong>
+      <small>CARTEIRINHA OFICIAL DE FISCALIZAÇÃO ÉTICA</small>
+      <strong>Nº ${data.formattedNumber}</strong>
     </div>
     <p class="label">AGENTE CREDENCIADO(A)</p>
     <h1 class="name">${data.codinome}</h1>
-    <p class="meta"><strong>MATRÃCULA:</strong> ${data.id} &nbsp;|&nbsp; <strong>BASE:</strong> ${data.cidade}/${data.uf} &nbsp;|&nbsp; <strong>EMISSÃƒO:</strong> ${data.date}</p>
-    <p class="quote">â€œAutorizado(a) a educar motoristas folgados com a sutileza que eles merecem.â€</p>
+    <p class="meta"><strong>MATRÍCULA:</strong> ${data.id} &nbsp;|&nbsp; <strong>BASE:</strong> ${data.cidade}/${data.uf} &nbsp;|&nbsp; <strong>EMISSÃO:</strong> ${data.date}</p>
+    <p class="quote">“Autorizado(a) a educar motoristas folgados com a sutileza que eles merecem.”</p>
   </div>
   <script>window.onload = () => { window.print(); };<\/script>
 </body>
@@ -499,7 +498,6 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
       function updateCountersUI(lastNumber: number, nextFormatted: string) {
         if (counterEl) counterEl.textContent = String(lastNumber);
         if (topbarNextNumEl) topbarNextNumEl.textContent = `#${nextFormatted}`;
-        if (formNextSeqEl) formNextSeqEl.textContent = `NÂº ${nextFormatted}`;
       }
 
       function renderAgentsList(agents: AgentCredential[]) {
@@ -508,7 +506,7 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         if (agents.length === 0) {
           const li = document.createElement("li");
           li.className = "empty-item";
-          li.textContent = "Nenhuma carteirinha emitida ainda. Seja o NÂº 0001!";
+          li.textContent = "Nenhuma carteirinha emitida ainda. Seja o Nº 0001!";
           recentListEl.appendChild(li);
           return;
         }
@@ -521,9 +519,9 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
           const li = document.createElement("li");
           const left = document.createElement("span");
           const strong = document.createElement("strong");
-          strong.textContent = `NÂº ${agent.formattedNumber}`;
+          strong.textContent = `Nº ${agent.formattedNumber}`;
           left.appendChild(strong);
-          left.appendChild(document.createTextNode(` â€” ${cleanCodinome} (${cleanCidade}/${agent.uf})`));
+          left.appendChild(document.createTextNode(` — ${cleanCodinome} (${cleanCidade}/${agent.uf})`));
 
           const btn = document.createElement("button");
           btn.type = "button";
@@ -550,7 +548,7 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         };
 
         currentCredential = normalized;
-        credSeqNumberEl.textContent = `NÂº ${normalized.formattedNumber}`;
+        credSeqNumberEl.textContent = `Nº ${normalized.formattedNumber}`;
         credIdEl.textContent = normalized.id;
         credNameEl.textContent = normalized.codinome;
         credLocEl.textContent = `${normalized.cidade}/${normalized.uf}`;
@@ -638,7 +636,7 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
 
         if (btnSubmit) {
           btnSubmit.disabled = true;
-          btnSubmit.textContent = "EMITINDO NÂº SEQUENCIAL...";
+          btnSubmit.textContent = "GERANDO CARTEIRINHA...";
         }
 
         try {
@@ -691,7 +689,7 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         } finally {
           if (btnSubmit) {
             btnSubmit.disabled = false;
-            btnSubmit.textContent = "GERAR CARTEIRINHA SEQUENCIAL";
+            btnSubmit.textContent = "GERAR CARTEIRINHA";
           }
         }
       });
@@ -872,7 +870,7 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         padding: 0.9rem 1.35rem;
         border: var(--border-thin);
         cursor: pointer;
-        transition: transform 0.1s ease, background-color 0.1s ease, color 0.1s ease;
+        transition: transform 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease;
         letter-spacing: 0.02em;
       }
 
@@ -899,6 +897,24 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
       .btn-outline:hover {
         background: #000000;
         color: #ffffff;
+      }
+
+      .btn-gray-rounded {
+        background: linear-gradient(180deg, #6e6e6e 0%, #4b4b4b 100%);
+        color: #ffffff;
+        border: 2px solid #2b2b2b;
+        border-radius: 10px;
+        box-shadow: 0 4px 0 #222222, 0 6px 12px rgba(0, 0, 0, 0.16);
+        padding: 0.95rem 1.5rem;
+      }
+
+      .btn-gray-rounded:hover {
+        background: linear-gradient(180deg, #5c5c5c 0%, #383838 100%);
+      }
+
+      .btn-gray-rounded:active {
+        transform: translateY(3px);
+        box-shadow: 0 1px 0 #222222, 0 2px 5px rgba(0, 0, 0, 0.15);
       }
 
       .btn-full {
@@ -961,25 +977,6 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         font-size: 1.05rem;
         font-weight: 700;
         letter-spacing: 0.02em;
-      }
-
-      .next-seq-banner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border: var(--border-thin);
-        background: #f7f7f7;
-        padding: 0.5rem 0.75rem;
-        margin-bottom: 1rem;
-        font-size: 0.76rem;
-        letter-spacing: 0.03em;
-      }
-
-      .next-seq-banner strong {
-        background: #000;
-        color: #fff;
-        padding: 0.15rem 0.5rem;
-        font-size: 0.85rem;
       }
 
       .box-desc {
