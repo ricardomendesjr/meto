@@ -510,7 +510,7 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
           left.appendChild(document.createTextNode(` — ${cleanCodinome}`));
 
           const right = document.createElement("span");
-          right.textContent = `${cleanCidade}/${agent.uf}`;
+          right.textContent = ` ${cleanCidade}/${agent.uf}`;
 
           li.appendChild(left);
           li.appendChild(right);
@@ -1197,36 +1197,16 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         padding-right: 0.25rem;
       }
 
-      .recent-list li {
+      .recent-list :global(li) {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 0.5rem;
+        gap: 1rem;
         border-bottom: 1px dotted #999;
         padding-bottom: 0.35rem;
       }
 
-      .btn-inline-download {
-        background: none;
-        border: none;
-        font-family: var(--font-main);
-        font-size: 0.72rem;
-        font-weight: 700;
-        color: #000;
-        cursor: pointer;
-        text-decoration: underline;
-        padding: 0;
-        flex-shrink: 0;
-      }
-
-      .btn-inline-download:hover {
-        background: #000;
-        color: #fff;
-        text-decoration: none;
-        padding: 0.1rem 0.3rem;
-      }
-
-      .recent-list li.empty-item {
+      .recent-list :global(li.empty-item) {
         color: var(--muted);
         font-style: italic;
         border-bottom: none;
