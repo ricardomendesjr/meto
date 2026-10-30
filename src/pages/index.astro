@@ -119,7 +119,7 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         </div>
 
         <p class="specs-note no-print">
-          Arquivo original: <code>{pdfFileName}</code> (422 KB • Pronto para impressão em folha A4 ou A5).
+          Arquivo original: <a href={`/${pdfFileName}`} download={pdfFileName} class="specs-link"><code>{pdfFileName}</code></a> (Pronto para impressão em folha A4 ou A5).
         </p>
       </section>
 
@@ -941,6 +941,16 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         padding: 0.15rem 0.35rem;
         border: 1px solid #000;
         font-size: 0.75rem;
+      }
+
+      .specs-link {
+        color: inherit;
+        text-decoration: underline;
+      }
+
+      .specs-link:hover code {
+        background: #000;
+        color: #fff;
       }
 
       /* TWO-COLUMN SECTION */
