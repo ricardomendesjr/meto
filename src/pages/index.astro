@@ -303,6 +303,7 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
     <script>
       const STORAGE_KEY = "meto_last_credential_v2";
       const LOCAL_SEQ_KEY = "meto_local_seq_counter_v2";
+      const LOCAL_AGENTS_KEY = "meto_agents_list_v2";
 
       const form = document.getElementById("meto-form") as HTMLFormElement | null;
       const btnSubmit = document.getElementById("btn-submit-form") as HTMLButtonElement | null;
@@ -534,7 +535,18 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
         credBox.hidden = false;
       }
 
-      // Sync with backend sequential counter on load
+      function getLocalAgents(): AgentCredential[] {
+        try {
+          const raw = localStorage.getItem(LOCAL_AGENTS_KEY);
+          if (!raw) return [];
+          const parsed = JSON.parse(raw);
+          return Array.isArray(parsed) ? parsed : [];
+        } catch {
+          return [];
+        }
+      }
+
+      // Sync with backend sequential counter on load (with localStorage fallback)
       async function syncSequentialState() {
         try {
           const res = await fetch("/api/inscricao");
@@ -542,10 +554,17 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
             const data = await res.json();
             updateCountersUI(data.lastNumber, data.nextFormattedNumber);
             renderAgentsList(data.agents || []);
+            localStorage.setItem(LOCAL_SEQ_KEY, String(data.lastNumber));
+            localStorage.setItem(LOCAL_AGENTS_KEY, JSON.stringify(data.agents || []));
+            return;
           }
         } catch {
           // Offline/static fallback
         }
+        const localAgents = getLocalAgents();
+        const localSeq = parseInt(localStorage.getItem(LOCAL_SEQ_KEY) || String(localAgents.length), 10);
+        updateCountersUI(localSeq, padSequential(localSeq + 1));
+        renderAgentsList(localAgents);
       }
 
       const savedRaw = localStorage.getItem(STORAGE_KEY);
@@ -593,6 +612,7 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
 
           localStorage.setItem(STORAGE_KEY, JSON.stringify(credential));
           localStorage.setItem(LOCAL_SEQ_KEY, String(credential.number));
+          localStorage.setItem(LOCAL_AGENTS_KEY, JSON.stringify(result.agents || []));
 
           updateCountersUI(result.lastNumber, result.nextFormattedNumber);
           renderAgentsList(result.agents || []);
@@ -600,7 +620,11 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
           form.reset();
         } catch {
           // Fallback to localStorage sequential counter if server endpoint is unavailable
-          const currentLocal = parseInt(localStorage.getItem(LOCAL_SEQ_KEY) || "0", 10);
+          const localAgents = getLocalAgents();
+          const currentLocal = Math.max(
+            parseInt(localStorage.getItem(LOCAL_SEQ_KEY) || "0", 10),
+            localAgents.length
+          );
           const nextNum = currentLocal + 1;
           const formattedNumber = padSequential(nextNum);
           const credential: AgentCredential = {
@@ -613,9 +637,12 @@ const nextFormatted = String(lastNumber + 1).padStart(4, "0");
             date: new Date().toLocaleDateString("pt-BR"),
           };
 
+          localAgents.unshift(credential);
           localStorage.setItem(LOCAL_SEQ_KEY, String(nextNum));
+          localStorage.setItem(LOCAL_AGENTS_KEY, JSON.stringify(localAgents));
           localStorage.setItem(STORAGE_KEY, JSON.stringify(credential));
           updateCountersUI(nextNum, padSequential(nextNum + 1));
+          renderAgentsList(localAgents);
           renderCredential(credential);
           form.reset();
         } finally {
