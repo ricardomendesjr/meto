@@ -20,7 +20,7 @@ O portal foi criado com dois objetivos principais:
   - Visual minimalista em preto e branco replicando exatamente a tipografia e as proporções do panfleto oficial em PDF.
   - Folha de estilo de impressão dedicada (`@media print` em formato `A5 landscape`) para imprimir apenas o aviso diretamente pelo navegador.
 - **Download Direto do PDF:**
-  - Download com 1 clique do arquivo oficial `aviso_estacionamento_A5_paisagem_METO_corrigido.pdf` ou abertura em nova aba.
+  - Download com 1 clique do arquivo oficial `aviso_estacionamento_A5_paisagem_METO.pdf` ou abertura em nova aba.
 - **Inscrição Rápida e Emissão de Carteirinha Sequencial:**
   - Cadastro simplificado com **Apelido/Codinome** e **Cidade/UF**.
   - **Filtro inteligente contra CAIXA ALTA:** converte automaticamente nomes e cidades digitados em letras maiúsculas para *Title Case* (ex.: `JOÃO DA SILVA` → `João da Silva`, `SÃO JOSÉ DOS CAMPOS` → `São José dos Campos`), preservando preposições em português.
@@ -50,8 +50,8 @@ O portal foi criado com dois objetivos principais:
 │   └── functions/
 │       └── inscricao.mjs                                 # Serverless function (GET/POST sequencial via Netlify Blobs)
 ├── public/
-│   ├── aviso_estacionamento_A5_paisagem_METO_corrigido.pdf # Arquivo PDF oficial para download
-│   └── favicon.svg                                       # Ícone P&B do movimento
+│   ├── aviso_estacionamento_A5_paisagem_METO.pdf # Arquivo PDF oficial para download
+│   └── favicon.svg                               # Ícone P&B do movimento
 ├── src/
 │   └── pages/
 │       └── index.astro                                   # Página principal, formulário e gerador de carteirinha
